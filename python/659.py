@@ -7,8 +7,8 @@ class Solution(object):
         """
         import heapq
         from collections import defaultdict
+        #result结构为{i,[结尾为i的串的长度组成的队列]}
         result = defaultdict(list)
-        queue = []
         #循环遍历nums
         for i in nums:
             #找到比i小1的数字，在其尾部追加
@@ -27,4 +27,3 @@ class Solution(object):
                 if (i < 3):
                     return False
         return True
-
