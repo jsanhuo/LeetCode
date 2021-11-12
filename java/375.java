@@ -18,3 +18,24 @@ class Solution {
         return dp[1][n];
     }
 }
+//另一种遍历方向
+class Solution {
+    public int getMoneyAmount(int n) {
+        int[][] dp = new int[n + 1][n + 1];
+        for (int j = 1; j <=n; j++) {
+            for (int i = j-1; i >= 1; i--) {
+                if(i+1 == j){
+                    dp[i][j] = i;
+                }else{
+                    int minCost = Integer.MAX_VALUE;
+                    for (int k = i; k < j; k++) {
+                        int cost = k + Math.max(dp[i][k - 1], dp[k + 1][j]);
+                        minCost = Math.min(minCost, cost);
+                    }
+                    dp[i][j] = minCost;
+                } 
+            }
+        }
+        return dp[1][n];
+    }
+}
